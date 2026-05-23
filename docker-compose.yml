@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - '${DB_PORT}:5432'
+      - '5432:5432'
     volumes:
       - clientnest_data:/var/lib/postgresql/data
 
