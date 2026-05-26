@@ -21,6 +21,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @SQLRestriction("is_deleted = false")
+@Table(name = "users", schema = "public")
 public class User {
 
     @Id
