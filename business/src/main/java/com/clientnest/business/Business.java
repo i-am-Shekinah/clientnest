@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+
 @Entity
 @Getter
 @Setter
@@ -56,7 +57,10 @@ public class Business {
     @JoinColumn(name = "business_owner_id", nullable = false)
     private User businessOwner;
 
-    @Column(name = "is_deleted")
+    @NotNull
+    private String businessUrl;
+
+    @Column(name = "is_deleted", nullable = false)
     private boolean deleted;
 
     @NotNull
@@ -66,8 +70,6 @@ public class Business {
     private LocalDateTime updatedAt;
 
     private LocalDateTime deletedAt;
-
-
 
 
     @Override
@@ -89,8 +91,16 @@ public class Business {
                 ", businessName='" + businessName + '\'' +
                 ", businessDescription='" + businessDescription + '\'' +
                 ", businessEmail='" + businessEmail + '\'' +
+                ", businessAddress='" + businessAddress + '\'' +
+                ", businessCity='" + businessCity + '\'' +
+                ", businessState='" + businessState + '\'' +
+                ", businessPhone='" + businessPhone + '\'' +
+                ", businessOwner=" + businessOwner +
+                ", businessUrl='" + businessUrl + '\'' +
+                ", deleted=" + deleted +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
+                ", deletedAt=" + deletedAt +
                 '}';
     }
 }
