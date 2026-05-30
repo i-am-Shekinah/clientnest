@@ -26,9 +26,11 @@
 
 	<modules>
 		<module>business</module>
+		<module>auth</module>
 		<module>service</module>
 		<module>service-gateway</module>
 		<module>user</module>
+		<module>security</module>
 	</modules>
 
 	<dependencyManagement>
