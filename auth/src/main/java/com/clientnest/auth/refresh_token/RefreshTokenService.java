@@ -1,4 +1,4 @@
-package com.clientnest.security.refresh_token;
+package com.clientnest.auth.refresh_token;
 
 import com.clientnest.user.User;
 import com.clientnest.user.UserRepository;
@@ -19,7 +19,7 @@ public class RefreshTokenService {
     @Value("${security.jwt.refresh-expiration}")
     private Long refreshExpiration;
 
-    public RefreshTokenDto createRefreshToken(User user) {
+    public RefreshToken createRefreshToken(User user) {
         RefreshToken refreshToken = RefreshToken.builder()
                 .refreshToken(UUID.randomUUID().toString())
                 .user(user)
@@ -28,12 +28,15 @@ public class RefreshTokenService {
                 .createdAt(Instant.now())
                 .build();
 
-        final var saved = refreshTokenRepository.save(refreshToken);
-        return RefreshTokenMapper.INSTANCE.toDto(saved);
+        return refreshTokenRepository.save(refreshToken);
     }
 
-    public RefreshTokenDto verifyRefreshToken(String token) {
-        RefreshToken refreshToken = refreshTokenRepository.findByToken(token)
+    public RefreshToken save(RefreshToken refreshToken) {
+        return refreshTokenRepository.save(refreshToken);
+    }
+
+    public RefreshToken verifyRefreshToken(String token) {
+        RefreshToken refreshToken = refreshTokenRepository.findByRefreshToken(token)
                 .orElseThrow(() -> new RuntimeException("Invalid refresh token"));
 
         if (refreshToken.isRevoked()) {
@@ -46,7 +49,7 @@ public class RefreshTokenService {
             throw new RuntimeException("Refresh token is expired");
         }
 
-        return RefreshTokenMapper.INSTANCE.toDto(refreshToken);
+        return refreshToken;
     }
 
     // Revoke (logout)

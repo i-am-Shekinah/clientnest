@@ -1,4 +1,4 @@
-package com.clientnest.security.refresh_token;
+package com.clientnest.auth.refresh_token;
 
 import com.clientnest.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID> {
 
-    Optional<RefreshToken> findByToken(String token);
+    Optional<RefreshToken> findByRefreshToken(String refreshToken);
 
     List<RefreshToken> findByUser(User user);
 

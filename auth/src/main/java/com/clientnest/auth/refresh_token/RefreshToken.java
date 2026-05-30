@@ -1,4 +1,4 @@
-package com.clientnest.security.refresh_token;
+package com.clientnest.auth.refresh_token;
 
 import com.clientnest.user.User;
 import jakarta.persistence.*;
@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 public class RefreshToken {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

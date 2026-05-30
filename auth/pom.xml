@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>auth</artifactId>
-    <name>security</name>
+    <name>auth</name>
     <description>Service feature module for ClientNest</description>
 
     <dependencies>
@@ -38,8 +38,17 @@
             <version>1.6.3</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>user</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>security</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
