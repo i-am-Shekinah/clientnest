@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.clientnest.business.BusinessDto.AddBusinessDto;
 import com.clientnest.business.BusinessDto.UpdateBusinessDto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -40,7 +40,7 @@ public class BusinessService {
         business.setBusinessName(dto.businessName());
         business.setBusinessDescription(dto.businessDescription());
         business.setBusinessEmail(dto.businessEmail());
-        business.setUpdatedAt(LocalDateTime.now());
+        business.setUpdatedAt(Instant.now());
 
         return BusinessMapper.INSTANCE.toDto(businessRepository.save(business));
     }

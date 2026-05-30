@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 public record BusinessDto(
@@ -15,8 +15,8 @@ public record BusinessDto(
         String ownerLastName,
         String businessEmail,
         boolean isDeleted,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        Instant createdAt,
+        Instant updatedAt
 ) {
     public record AddBusinessDto(
             @NotBlank

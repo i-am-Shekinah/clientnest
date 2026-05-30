@@ -6,7 +6,7 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -65,11 +65,11 @@ public class Business {
 
     @NotNull
     @Column(updatable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
 
-    private LocalDateTime deletedAt;
+    private Instant deletedAt;
 
 
     @Override
