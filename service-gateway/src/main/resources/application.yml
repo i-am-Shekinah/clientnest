@@ -13,12 +13,6 @@ spring:
     locations: classpath:db/migration/default
     baselineOnMigrate: true
 
-  springdoc:
-    swagger-ui:
-      path: /swagger-ui.html
-    api-docs:
-      path: /v3/api-docs
-
   jpa:
     show-sql: true
     hibernate:
@@ -26,3 +20,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET}
+    access-expiration: ${ACCESS_EXPIRATION}
+    refresh-expiration: ${REFRESH_EXPIRATION}

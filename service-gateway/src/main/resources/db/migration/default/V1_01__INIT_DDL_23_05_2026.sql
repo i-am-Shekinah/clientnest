@@ -241,3 +241,22 @@ CREATE TABLE public.message_edit_history (
         REFERENCES public.chat_message(message_id)
         ON DELETE CASCADE
 );
+
+
+
+-- =========================
+-- REFRESH_TOKEN TABLE
+-- =========================
+CREATE TABLE public.refresh_token (
+    refresh_token_id                            UUID NOT NULL,
+    refresh_token                               VARCHAR(255) NOT NULL ,
+    user_id                                     UUID NOT NULL,
+    expiry_date                                 TIMESTAMPTZ NOT NULL,
+    revoked                                     BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at                                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+    CONSTRAINT pk_refresh_token PRIMARY KEY (refresh_token_id),
+    CONSTRAINT fk_user FOREIGN KEY (user_id)
+        REFERENCES public.users(user_id)
+        ON DELETE CASCADE
+)
